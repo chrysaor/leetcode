@@ -1,5 +1,4 @@
 # Minimum Weight Path In A Triangle
-[Minimum Weight Path In A Triangle](https://backtobackswe.com/platform/content/minimum-weight-path-in-a-triangle)
 
 ```
 Given a 2D array that resembles the shape of a triangle, return the min-cost path from the top to the bottom.
