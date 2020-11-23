@@ -1,5 +1,4 @@
 # Number of Ways To Traverse A Matrix
-[Number of Ways To Traverse A Matrix](https://backtobackswe.com/platform/content/number-of-ways-to-traverse-a-matrix)
 
 ```
 Given an integer value m (rows of a matrix), and an interger value n (columns of a matrix), return the total possible unique, simple, paths from the top-left of the matrix to the bottom-right with restricted moves.

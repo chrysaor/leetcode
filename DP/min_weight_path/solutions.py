@@ -1,12 +1,6 @@
 class Solution:
     def minimumPathCost(self, triangle):
         """Calculate minimum path triangle
-        [
-          [5],
-          [1,6],
-          [4,3,10],
-          [3,2,4,1]
-        ]
         :type triangle: list of list of int
         :rtype: int
         """
@@ -40,11 +34,40 @@ class Solution:
 
         return sum_path
 
+    def minimumPathCostDp(self, triangle):
+        """Calculate minimum path triangle
+        Time = O(N)
+        Because main loop will calculate for all triangle vertex.
+
+        :type triangle: list of list of int
+        :rtype: int
+        """
+
+        # Data initiate
+        target = triangle[-1]
+        cache = [0] * len(triangle)
+
+        for idx in range(len(target)):
+            cache[idx] = target[idx]
+
+        for idx in range(len(triangle) - 2, -1, -1):
+            current = triangle[idx]
+
+            # Cache update
+            for current_idx in range(len(current)):
+                left_val = cache[current_idx]
+                right_val = cache[current_idx + 1]
+
+                cache[current_idx] = min(left_val, right_val) + current[current_idx]
+
+        return cache[0]
+
 
 table = [
     [5],
-    [2, 3],
+    [1, 6],
     [4, 3, 10],
+    [3, 2, 4, 1],
 ]
 
-print(Solution().minimumPathCost(table))
+print(Solution().minimumPathCostDp(table))
