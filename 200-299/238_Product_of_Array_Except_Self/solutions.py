@@ -49,34 +49,7 @@ class Solution:
         """Product array of brute force way - O(N^2) because its count in loop 3N product list size N"""
         return [reduce((lambda x, y: x * y), nums[:idx] + nums[idx+1:]) for idx in range(len(nums))]
 
-    def productExceptCurrentElement(self, arr):
-        '''
-        :type arr: list of int
-        :rtype: list of int
-        '''
-        left_sum, right_sum = [], []
-
-        temp = 1
-        for num in arr:
-            temp = num*temp
-            left_sum.append(temp)
-
-        temp = 1
-        for num in arr[::-1]:
-            temp = num*temp
-            right_sum.append(temp)
-
-        right_sum = right_sum[::-1]
-
-        result = []
-        for idx in range(1, len(arr)-1):
-            left_val = left_sum[idx-1]
-            right_val = right_sum[idx+1]
-            result.append(left_val*right_val)
-
-        return [right_sum[1]] + result + [left_sum[len(arr)-2]]
-
 
 if __name__ == '__main__':
-    print(Solution().productExceptCurrentElement([1, 2, 3]))
+    print(Solution().productExceptSelf([1, 2, 3]))
     print(Solution().productExceptSelf([12, 4, 6, 8]))
