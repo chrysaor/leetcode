@@ -13,7 +13,7 @@ class Solution:
         return self.ans_list
 
     def my_reach_score(self, score: int, point_list: List[int], used_list: List[int]):
-        """Find combination sum with DP"""
+        """Find combination sum with recursive approach"""
         key = ','.join(str(item) for item in used_list)
 
         if key in self.dp or score < 0:
@@ -38,6 +38,14 @@ class Solution:
         self.dp[key] = ans
 
         return ans
+
+    def my_reach_score_updated(self, candidates, target, curr_nums):
+        """Find combination sum with recursive approach"""
+        pass
+
+    def my_reach_score_dp(self, candidates, target):
+        """Find combination sum with recursive approach"""
+        pass
 
 
 print(Solution().combinationSum([2, 3, 7], 12))
