@@ -1,6 +1,8 @@
+import functools
+
 class Solution:
     def numDecodings(self, s: str) -> int:
-        return self.bootom_up_approach(s)
+        return self.top_down_approach(s)
 
     def bootom_up_approach(self, s: str) -> int:
         """Dynamic programming: Bottom-up Approach [Time complexity O(N)]"""
@@ -20,17 +22,35 @@ class Solution:
 
         return dp[len(s)]
 
+    @functools.lru_cache(maxsize=1000)
     def top_down_approach(self, s: str) -> int:
         """Dynamic programming: Bottom-up Approach [Time complexity O(V+E)]"""
-        pass
+        ans = 0
+
+        if len(s) == 1:
+            if 0 < int(s) <= 9:
+                ans += 1
+            return ans
+
+        if len(s) == 2:
+            ans = 0
+            if 0 < int(s[1]) <= 9:
+                ans += 1
+            if 10 <= int(s) <= 26:
+                ans += 1
+            return ans
+
+        return self.top_down_approach(s[1:]) + self.top_down_approach(s[2:]) if s[:2] != '00' else 0
 
 
-print(Solution().numDecodings('1123'))
-print(Solution().numDecodings('10'))
-print(Solution().numDecodings('2101'))
-print(Solution().numDecodings('10001'))
-print(Solution().numDecodings('00000'))
-print(Solution().numDecodings('50'))
-print(Solution().numDecodings('27'))
-print(Solution().numDecodings('0'))
-print(Solution().numDecodings("2611055971756562"))
+sol = Solution()
+
+print(sol.bootom_up_approach('1123'), sol.top_down_approach('1123'))
+print(sol.numDecodings('10'), sol.top_down_approach('10'))
+print(sol.numDecodings('2101'), sol.top_down_approach('2101'))
+print(sol.numDecodings('10001'), sol.top_down_approach('10001'))
+print(sol.numDecodings('00000'), sol.top_down_approach('00000'))
+print(sol.numDecodings('50'), sol.top_down_approach('50'))
+print(sol.numDecodings('12340505012'), sol.top_down_approach('12340505012'))
+print(sol.numDecodings("2611055971756562"), sol.top_down_approach('2611055971756562'))
+print(sol.numDecodings("0"), sol.top_down_approach('0'))
