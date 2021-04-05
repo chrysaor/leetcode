@@ -3,7 +3,8 @@ from typing import List
 
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    @classmethod
+    def product_except_self(cls, nums: List[int]) -> List[int]:
         """Product array of dynamic way - O(N) because its count in loop 3N"""
         left_sum, right_sum = [], []
 
@@ -27,7 +28,8 @@ class Solution:
 
         return [right_sum[1]] + result + [left_sum[len(nums)-2]]
 
-    def product_except_self_short(self, nums: List[int]) -> List[int]:
+    @classmethod
+    def product_except_self_short(cls, nums: List[int]) -> List[int]:
         """Product array of dynamic way - O(N) because its count in loop 2N"""
         out = []
 
@@ -45,11 +47,12 @@ class Solution:
 
         return out
 
-    def product_except_self_brute_force(self, nums: List[int]) -> List[int]:
+    @classmethod
+    def product_except_self_brute_force(cls, nums: List[int]) -> List[int]:
         """Product array of brute force way - O(N^2) because its count in loop 3N product list size N"""
         return [reduce((lambda x, y: x * y), nums[:idx] + nums[idx+1:]) for idx in range(len(nums))]
 
 
 if __name__ == '__main__':
-    print(Solution().productExceptSelf([1, 2, 3]))
-    print(Solution().productExceptSelf([12, 4, 6, 8]))
+    print(Solution.product_except_self([1, 2, 3]))
+    print(Solution.product_except_self([12, 4, 6, 8]))
