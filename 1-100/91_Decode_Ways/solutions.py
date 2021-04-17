@@ -2,10 +2,12 @@ from functools import lru_cache
 
 
 class Solution:
-    def numDecodings(self, s: str) -> int:
-        return self.bootom_up_approach(s)
+    @classmethod
+    def num_decoding(cls, s: str) -> int:
+        return cls.bottom_up_approach(s)
 
-    def bootom_up_approach(self, s: str) -> int:
+    @classmethod
+    def bottom_up_approach(cls, s: str) -> int:
         """Dynamic programming: Bottom-up Approach [Time complexity O(N)]"""
         if not s:
             return 0
@@ -23,7 +25,8 @@ class Solution:
 
         return dp[len(s)]
 
-    def top_down_approach(self, s: str) -> int:
+    @classmethod
+    def top_down_approach(cls, s: str) -> int:
         """Dynamic programming: Bottom-up Approach [Time complexity O(V+E)]"""
         if len(s) == 0 or s is None:
             return 0
@@ -49,7 +52,8 @@ class Solution:
 
         return result_sum
 
-    def short_line_approach(self, s):
+    @classmethod
+    def short_line_approach(cls, s):
         """Dynamic programming: Bottom-up Approach [Time complexity O(N)]"""
         v, w, p = 0, int(s > ''), ''
         for d in s:
@@ -59,13 +63,11 @@ class Solution:
         return w
 
 
-sol = Solution()
-
-print(sol.numDecodings('1123'), sol.top_down_approach('1123'))
-print(sol.numDecodings('10'), sol.top_down_approach('10'))
-print(sol.numDecodings('2101'), sol.top_down_approach('2101'))
-print(sol.numDecodings('10001'), sol.top_down_approach('10001'))
-print(sol.numDecodings('00000'), sol.top_down_approach('00000'))
-print(sol.numDecodings('10010012420101'), sol.short_line_approach('10010012420101'))
-print(sol.numDecodings('12340505012'), sol.top_down_approach('12340505012'))
-print(sol.numDecodings("0"), sol.top_down_approach('0'))
+print(Solution.num_decoding('1123'), Solution.top_down_approach('1123'))
+print(Solution.num_decoding('10'), Solution.top_down_approach('10'))
+print(Solution.num_decoding('2101'), Solution.top_down_approach('2101'))
+print(Solution.num_decoding('10001'), Solution.top_down_approach('10001'))
+print(Solution.num_decoding('00000'), Solution.top_down_approach('00000'))
+print(Solution.num_decoding('10010012420101'), Solution.short_line_approach('10010012420101'))
+print(Solution.num_decoding('12340505012'), Solution.top_down_approach('12340505012'))
+print(Solution.num_decoding("0"), Solution.top_down_approach('0'))
