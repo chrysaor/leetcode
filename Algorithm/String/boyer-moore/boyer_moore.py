@@ -1,8 +1,17 @@
 
 
-def boyer_moore_search(source, target) -> int:
+def boyer_moore_search(source: str, target: str) -> int:
+    """
+    보이어 무어 알고리즘을 통해 source 문자열에서 target을 검색한다.
+    :param source: Source 문자열
+    :param target: 찾고자 하는 문자열
+    :return: 만약 해당 문자열이 source에 있다면 최초 위치 인덱스, 없다면 -1
+    """
+    # String table -> 검색 문자열 리스트
     string_table = list(target)
+    # Skip table -> 문자 일치 여부에 따른 이동 거리
     skip_table = [idx for idx in range(len(target) - 1, -1, -1)] + [len(target)]
+    # String set -> 본문의 문자가 검색 문자열에 있는지 확인을 위한 set
     string_set = set(string_table)
 
     print(string_table, skip_table, string_set)
@@ -29,6 +38,7 @@ def boyer_moore_search(source, target) -> int:
         else:
             # 끝 문자가 다르고 해당 문자가 존재 하는 경우
             cur_idx += skip_table[-1]
+
     return -1
 
 
