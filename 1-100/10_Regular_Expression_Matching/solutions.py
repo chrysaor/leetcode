@@ -18,3 +18,9 @@ class Solution:
                 current += 1
 
         return True
+
+    def match(self, s: str, p: str) -> bool:
+        if s == '' and p == '':
+            return True
+
+
