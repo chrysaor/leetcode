@@ -52,4 +52,4 @@ class Solution:
 
 
 if __name__ == '__main__':
-    print(Solution().coin_change([1, 2, 5], 14))
+    print(Solution().bottom_up([1, 2, 5], 14))
